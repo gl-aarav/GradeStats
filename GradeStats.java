@@ -73,7 +73,7 @@ public class GradeStats
 		System.out.println("\n\nMin score: " + min);
 		System.out.println("Max score: " + max);
 		System.out.println("Median score: " + median);
-		System.out.println("Average score: " + avg + "\n\n\n");	
+		System.out.printf("Average score: %.2f\n\n\n", avg);	
 	}
 
 	public void sort(int numScores)
