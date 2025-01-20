@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class GradeStats 
 {
-	int[] grades = new int[500];
+	int[] grades = new int[20];
 	public static void main(String[] args) 
 	{
 		GradeStats gs = new GradeStats();
@@ -12,14 +12,17 @@ public class GradeStats
 	public void calculateIt()
 	{	
 		int numScores = 0;
-
 		Scanner in = new Scanner(System.in);
 		boolean next = true;
 		System.out.println("\n\n\n");
-		while (next) 
+		int counter = 1;
+		for (int i = 0; next; i++)
 		{
-			System.out.print("\nEnter a score (or type 'Quit' to stop): ");
+			System.out.print("\nType in the score. Type \"Quit\" to end the program --> ");
 			String input = in.next();
+
+
+
 
 			if (input.equalsIgnoreCase("Quit")) 
 			{
@@ -28,6 +31,10 @@ public class GradeStats
 			else
 			{
 				int score = Integer.parseInt(input);
+				if (score < 75)
+				{
+					counter++;
+				}
 				if (numScores < grades.length) 
 				{
 					grades[numScores] = score;
@@ -48,27 +55,54 @@ public class GradeStats
 		}
 		else
 		{
+			printStudents(numScores, counter);
 			sort(numScores);
 			printData(numScores);
 		}
 	}
 
-	public void printData(int numScores)
+	public void printStudents(int numScores, int count)
 	{
-		System.out.println("\nScores:");
+		System.out.println("\nHere is the data you entered:");
 		for (int i = 0; i < numScores; i++) 
 		{
 			System.out.println("Student " + (i + 1) + ": " + grades[i]);
 		}
 
+		System.out.print("\nThere were " + (count-1) + " student(s) who scored below 75%:");
+
+		int i = 0;
+		for (i = 0; i < numScores; i++) 
+		{
+			if (grades[i] < 75) 
+			{
+				if (i == 0)
+				{
+					System.out.print(" student " + (i + 1));
+				}
+				else
+				{
+					System.out.print(", student " + (i + 1));
+				}
+
+			}
+		}
+		if (i!=0)
+		{
+			System.out.print(".");
+		}
+
+	}
+
+	public void printData(int numScores)
+	{
 		int min = grades[0];
 		int max = grades[numScores - 1];
 		int sum = 0;
 		int median = grades[numScores/2];
 		for (int i = 0; i < numScores; i++) 
-		{
 			sum += grades[i];
-		}
+
 		double avg = sum / (double) numScores;
 		System.out.println("\n\nMin score: " + min);
 		System.out.println("Max score: " + max);
