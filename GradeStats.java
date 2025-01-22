@@ -21,9 +21,6 @@ public class GradeStats
 			System.out.print("\nType in the score. Type \"Quit\" to end the program --> ");
 			String input = in.next();
 
-
-
-
 			if (input.equalsIgnoreCase("Quit")) 
 			{
 				next = false;
