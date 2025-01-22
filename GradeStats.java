@@ -1,8 +1,9 @@
+
 import java.util.Scanner;
 
 public class GradeStats 
 {
-	int[] grades = new int[20];
+	int[] grades = new int[1000];
 	public static void main(String[] args) 
 	{
 		GradeStats gs = new GradeStats();
@@ -39,7 +40,7 @@ public class GradeStats
 				} 
 				else 
 				{
-					System.out.println("Maximum score limit reached.");
+					System.out.println("Maximum score limit reached.\n\n\n");
 					next = false;
 				}
 			}
@@ -48,7 +49,7 @@ public class GradeStats
 
 		if (numScores == 0) 
 		{
-			System.out.println("No scores entered.");
+			System.out.println("No scores entered.\n\n\n");
 		}
 		else
 		{
@@ -79,7 +80,7 @@ public class GradeStats
 				}
 				else
 				{
-					System.out.print(", student " + (i + 1));
+					System.out.print(", student" + (i + 1));
 				}
 
 			}
@@ -96,15 +97,19 @@ public class GradeStats
 		int min = grades[0];
 		int max = grades[numScores - 1];
 		int sum = 0;
-		int median = grades[numScores/2];
+		double median;
+		if (numScores%2==1)
+			median = grades[numScores/2];
+		else
+			median = (grades[numScores/2] + grades[(numScores/2)-1])/2;
 		for (int i = 0; i < numScores; i++) 
 			sum += grades[i];
 
 		double avg = sum / (double) numScores;
 		System.out.println("\n\nMin score: " + min);
 		System.out.println("Max score: " + max);
-		System.out.println("Median score: " + median);
-		System.out.printf("Average score: %.2f\n\n\n", avg);	
+		System.out.printf("Median score: %.1f\n", median);
+		System.out.printf("Average score: %.1f\n\n\n", avg);	
 	}
 
 	public void sort(int numScores)
