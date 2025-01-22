@@ -101,7 +101,7 @@ public class GradeStats
 		if (numScores%2==1)
 			median = grades[numScores/2];
 		else
-			median = (grades[numScores/2] + grades[(numScores/2)-1])/2;
+			median = (double)(grades[numScores/2] + grades[(numScores/2)-1])/2;
 		for (int i = 0; i < numScores; i++) 
 			sum += grades[i];
 
